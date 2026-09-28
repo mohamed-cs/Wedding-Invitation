@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محمد ورحاب</title>
+<meta name="description" content="دعوة كتب الكتاب والفرح - محمد مجدى ورحاب محمود - السبت 26 ديسمبر 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Great+Vibes&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#FFFFFF;
+    --ivory:#FDF9F5;
+    --gold:#B8925A;
+    --gold-deep:#9C7943;
+    --rose:#E3AFA6;
+    --rose-deep:#C9857A;
+    --ink:#4A3F38;
+    --deep:#3A2E28;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Tajawal',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 24px;position:relative;}
+
+  .flower{position:absolute;opacity:.55;pointer-events:none;}
+  .flower svg{width:100%;height:100%;display:block;}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:radial-gradient(120% 100% at 50% 0%, #FBF1EC 0%, var(--white) 60%);
+    padding:60px 24px 40px;
+    overflow:hidden;
+  }
+  .hero .kicker{
+    font-size:15px;
+    color:var(--rose-deep);
+    letter-spacing:.02em;
+    margin-bottom:18px;
+  }
+  .hero .names{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    color:var(--deep);
+    font-size:clamp(40px,11vw,64px);
+    line-height:1.35;
+    position:relative;
+    z-index:2;
+  }
+  .hero .amp{
+    display:block;
+    font-size:.45em;
+    color:var(--gold);
+    margin:6px 0;
+  }
+  .hero .date-line{
+    margin-top:22px;
+    font-size:17px;
+    color:var(--ink);
+  }
+  .hero .date-line b{color:var(--deep);font-weight:500;}
+  .divider{
+    width:64px;height:1px;background:var(--gold);
+    margin:26px auto;opacity:.7;
+  }
+
+  /* Countdown */
+  .countdown{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin-top:8px;
+    flex-wrap:wrap;
+  }
+  .countdown .cell{
+    background:var(--white);
+    border-radius:4px;
+    padding:14px 10px;
+    min-width:68px;
+    box-shadow:0 1px 0 rgba(58,46,40,.1), 0 4px 14px rgba(201,133,122,.08);
+  }
+  .countdown .num{
+    font-family:'Aref Ruqaa',serif;
+    font-size:28px;
+    color:var(--deep);
+    font-weight:700;
+    display:block;
+  }
+  .countdown .lbl{
+    font-size:12px;
+    color:var(--rose-deep);
+    margin-top:2px;
+    display:block;
+  }
+
+  section{padding:64px 0;position:relative;}
+  h2{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    color:var(--deep);
+    font-size:30px;
+    text-align:center;
+    margin:0 0 30px;
+  }
+
+  /* Story */
+  .story{position:relative;}
+  .story p{
+    font-size:17px;
+    line-height:2;
+    color:var(--ink);
+    text-align:center;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .story .sign{
+    display:block;
+    margin-top:22px;
+    font-family:'Aref Ruqaa',serif;
+    color:var(--gold-deep);
+    font-size:20px;
+  }
+
+  /* Details */
+  .details{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;}
+  .card{
+    background:var(--white);
+    border-radius:6px;
+    padding:26px 22px;
+    text-align:center;
+    box-shadow:0 1px 0 rgba(58,46,40,.08), 0 6px 20px rgba(227,175,166,.12);
+    border-top:2px solid var(--gold);
+    flex:1 1 240px;
+  }
+  .card .t{font-size:15px;color:var(--rose-deep);margin-bottom:8px;}
+  .card .d{font-family:'Aref Ruqaa',serif;font-size:22px;color:var(--deep);font-weight:700;}
+  .card .p{font-size:15px;color:var(--ink);margin-top:6px;}
+
+  /* Calendar card */
+  .calendar-card{
+    background:var(--white);
+    border-radius:6px;
+    overflow:hidden;
+    box-shadow:0 1px 0 rgba(58,46,40,.08), 0 6px 20px rgba(184,146,90,.15);
+    width:150px;
+    text-align:center;
+    flex:0 0 auto;
+  }
+  .calendar-card .cal-month{
+    background:linear-gradient(135deg,var(--rose-deep),var(--gold));
+    color:#fff;
+    font-size:14px;
+    padding:8px 0;
+    letter-spacing:.02em;
+  }
+  .calendar-card .cal-day{
+    font-family:'Aref Ruqaa',serif;
+    font-size:52px;
+    font-weight:700;
+    color:var(--deep);
+    line-height:1.1;
+    padding-top:14px;
+  }
+  .calendar-card .cal-weekday{font-size:14px;color:var(--ink);}
+  .calendar-card .cal-year{font-size:12px;color:var(--rose-deep);padding-bottom:14px;}
+
+  /* Mosque illustration */
+  .mosque-wrap{display:flex;justify-content:center;margin-bottom:12px;}
+  .mosque-wrap svg{width:150px;height:auto;}
+  .star-strip{
+    height:14px;
+    margin:4px auto 0;
+    width:80%;
+    background-image: repeating-linear-gradient(45deg, var(--gold) 0 3px, transparent 3px 10px);
+    opacity:.4;
+  }
+
+  /* Gallery */
+  .gallery-wrap{overflow:hidden;padding:64px 0;position:relative;direction:ltr;}
+  .gallery-wrap h2{margin-bottom:34px;}
+  .marquee{
+    display:flex;
+    gap:16px;
+    width:max-content;
+    direction:ltr;
+    animation:scroll 28s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .marquee{animation:none;} }
+  .marquee .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .marquee .ph{
+    overflow:hidden;
+    width:150px;height:190px;
+    border-radius:4px;
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    font-family:'Aref Ruqaa',serif;
+    font-size:15px;
+    text-align:center;
+    padding:10px;
+  }
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+
+  /* Formal invitation text */
+  .invite{text-align:center;padding:64px 0 24px;}
+  .invite .qal{font-size:14px;color:var(--rose-deep);margin-bottom:14px;}
+  .invite .verse{font-family:'Aref Ruqaa',serif;font-size:22px;line-height:2.1;color:var(--deep);max-width:520px;margin:0 auto;}
+  .invite .sadaq{font-family:'Aref Ruqaa',serif;font-size:15px;color:var(--gold-deep);margin-top:10px;}
+  .invite .txt{font-size:17px;line-height:2.1;color:var(--ink);max-width:480px;margin:0 auto;}
+  .invite .row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:6px 0;}
+  .invite .fam,.invite .who{font-family:'Aref Ruqaa',serif;font-size:24px;color:var(--gold-deep);font-weight:700;}
+  .invite .who small{display:block;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:300;color:var(--rose-deep);margin-bottom:2px;}
+  .invite .when{font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--deep);font-weight:700;margin-top:18px;}
+  .invite .sub{font-size:15px;color:var(--ink);margin-top:6px;}
+
+  /* Location */
+  .loc{text-align:center;padding:24px 0 48px;}
+  .loc .flourish{display:block;margin:0 auto;width:220px;height:auto;}
+  .loc h2{margin:14px 0;}
+  .mapcard{display:block;margin:18px auto;max-width:400px;border:1px solid #E6DCCB;border-radius:4px;overflow:hidden;box-shadow:0 6px 20px rgba(184,146,90,.15);}
+  .mapcard svg{display:block;width:100%;height:auto;}
+  .btn-map{display:inline-block;margin-top:6px;background:var(--deep);color:#fff;text-decoration:none;padding:13px 32px;border-radius:4px;font-size:15px;font-weight:500;}
+  .btn-map:hover{background:#5a473c;}
+  .btn-map:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+  /* Our story - hanging frames */
+  .ourstory{text-align:center;padding:24px 0 56px;}
+  .ourstory .en{font-size:12px;letter-spacing:.18em;color:var(--rose-deep);direction:ltr;margin-bottom:10px;}
+  .ourstory p{font-size:17px;line-height:2;max-width:440px;margin:0 auto 34px;color:var(--ink);}
+  .hang{position:relative;display:flex;justify-content:center;gap:12px;align-items:flex-start;padding-top:0;direction:ltr;}
+  .hang::before{content:"";position:absolute;top:0;left:2%;right:2%;height:1px;background:var(--gold);opacity:.6;}
+  .hang::after{content:"";position:absolute;top:-3px;left:2%;right:2%;height:7px;background:
+    radial-gradient(circle,var(--gold) 0 3px,transparent 3.5px) left center/7px 7px no-repeat,
+    radial-gradient(circle,var(--gold) 0 3px,transparent 3.5px) right center/7px 7px no-repeat;opacity:.7;}
+  .hang .item{display:flex;flex-direction:column;align-items:center;transform-origin:top center;animation:sway 6s ease-in-out infinite;}
+  .hang .item:nth-child(2){animation-delay:-2s;}
+  .hang .item:nth-child(3){animation-delay:-4s;}
+  @keyframes sway{0%,100%{transform:rotate(-1.2deg);}50%{transform:rotate(1.2deg);}}
+  @media (prefers-reduced-motion: reduce){ .hang .item{animation:none;} }
+  .hang .string{width:1px;background:var(--gold);opacity:.7;}
+  .hang .ring{width:7px;height:7px;border:1px solid var(--gold);border-radius:50%;background:var(--white);margin-bottom:-1px;}
+  .hang .fr{width:100px;height:142px;border:3px solid var(--gold);border-radius:50px 50px 6px 6px;overflow:hidden;background:var(--white);box-shadow:0 8px 18px rgba(184,146,90,.22);display:flex;align-items:center;justify-content:center;}
+  .hang .fr img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hang .fr svg{width:56px;height:56px;opacity:.85;}
+  .hang .num{margin-top:14px;width:26px;height:26px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold-deep);background:var(--white);}
+
+  /* Wishes & share */
+  .wishes{text-align:center;padding:24px 0 24px;}
+  .wishes p{font-size:16px;color:var(--ink);margin:0 0 22px;}
+  .wishes input,.wishes textarea{width:100%;max-width:340px;padding:14px 16px;border:1px solid #EEDFDA;border-radius:4px;font-family:'Tajawal',sans-serif;font-size:16px;background:var(--white);color:var(--ink);text-align:center;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;}
+  .wishes textarea{min-height:110px;resize:vertical;}
+  .wishes input:focus,.wishes textarea:focus{outline:2px solid var(--gold);outline-offset:2px;}
+  .btn-solid,.btn-ghost{display:inline-block;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:500;padding:13px 32px;border-radius:4px;cursor:pointer;text-decoration:none;}
+  .btn-solid{background:var(--deep);color:#fff;border:1px solid var(--deep);}
+  .btn-solid:hover{background:#5a473c;}
+  .btn-ghost{background:transparent;color:var(--gold-deep);border:1px solid var(--gold);}
+  .btn-ghost:hover{background:#FBF3E8;}
+  .btn-solid:focus-visible,.btn-ghost:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .sharebox{text-align:center;padding:16px 0 40px;}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 56px;
+    font-family:'Aref Ruqaa',serif;
+    color:var(--gold-deep);
+    font-size:18px;
+    position:relative;
+  }
+
+  /* Splash intro */
+  .frame-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px;}
+  .frame-row .initial{font-family:'Aref Ruqaa',serif;font-size:64px;color:var(--gold-deep);width:64px;line-height:1;}
+  .frame-row svg.frame{width:210px;height:auto;flex:0 0 auto;}
+  .latin{font-family:'Great Vibes',cursive;font-size:clamp(34px,9vw,46px);color:var(--deep);direction:ltr;margin:10px 0 4px;}
+  .datebig{font-size:22px;color:var(--deep);font-weight:500;margin-top:14px;direction:rtl;}
+  .weekday{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:6px;color:var(--gold-deep);font-size:18px;}
+  .weekday::before,.weekday::after{content:"";width:44px;height:1px;background:var(--gold);opacity:.7;}
+  .scroll-hint{margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--rose-deep);text-decoration:none;}
+  .scroll-hint .circ{width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:bob 1.6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  @media (prefers-reduced-motion: reduce){ .scroll-hint .circ{animation:none;} }
+
+  /* Splash intro */
+  body.locked{overflow:hidden;height:100vh;}
+  .splash{
+    position:fixed;inset:0;z-index:1000;
+    background:var(--ivory);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  .splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .splash .flap{position:absolute;inset:0;}
+  .splash .flap.top{clip-path:polygon(0 0,100% 0,50% 50%);background:linear-gradient(180deg,#F6EEE3,#FBF6EF);}
+  .splash .flap.bottom{clip-path:polygon(0 100%,100% 100%,50% 50%);background:linear-gradient(0deg,#F6EEE3,#FBF6EF);}
+  .splash .flap.left{clip-path:polygon(0 0,0 100%,50% 50%);background:linear-gradient(90deg,#F1E7D8,#FBF6EF);}
+  .splash .flap.right{clip-path:polygon(100% 0,100% 100%,50% 50%);background:linear-gradient(270deg,#F1E7D8,#FBF6EF);}
+  .splash .seal{
+    position:relative;z-index:2;
+    width:130px;height:130px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #D8B074, var(--gold-deep));
+    box-shadow:0 6px 18px rgba(156,121,67,.4), inset 0 2px 4px rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.2);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+  }
+  .splash .seal span{
+    font-family:'Aref Ruqaa',serif;
+    color:#3A2E17;
+    font-size:15px;
+    line-height:1.5;
+    padding:8px;
+  }
+  .splash .splash-flowers .flower{opacity:.7;}
+</style>
+</head>
+<body class="locked">
+
+<div class="splash" id="splash">
+  <div class="flap top"></div>
+  <div class="flap bottom"></div>
+  <div class="flap left"></div>
+  <div class="flap right"></div>
+  <div class="splash-flowers">
+    <div class="flower" style="top:6%;right:6%;width:56px;height:56px;transform:rotate(15deg)"><svg><use href="#flower"/></svg></div>
+    <div class="flower" style="bottom:6%;left:6%;width:56px;height:56px;transform:rotate(-20deg) scaleX(-1)"><svg><use href="#flower"/></svg></div>
+  </div>
+  <div class="seal"><span>بسم الله<br>الرحمن الرحيم</span></div>
+</div>
+
+<svg style="position:absolute;width:0;height:0" aria-hidden="true">
+<defs>
+  <symbol id="flower" viewBox="0 0 60 60">
+    <line x1="30" y1="60" x2="30" y2="34" stroke="#B8925A" stroke-width="1.4"/>
+    <path d="M30 34 Q20 40 14 48" fill="none" stroke="#B8925A" stroke-width="1.2"/>
+    <g>
+      <ellipse cx="30" cy="14" rx="7" ry="11" fill="#E3AFA6" opacity=".85" transform="rotate(0 30 20)"/>
+      <ellipse cx="30" cy="14" rx="7" ry="11" fill="#E3AFA6" opacity=".85" transform="rotate(72 30 20)"/>
+      <ellipse cx="30" cy="14" rx="7" ry="11" fill="#E3AFA6" opacity=".85" transform="rotate(144 30 20)"/>
+      <ellipse cx="30" cy="14" rx="7" ry="11" fill="#E3AFA6" opacity=".85" transform="rotate(216 30 20)"/>
+      <ellipse cx="30" cy="14" rx="7" ry="11" fill="#E3AFA6" opacity=".85" transform="rotate(288 30 20)"/>
+      <circle cx="30" cy="20" r="4.5" fill="#B8925A"/>
+    </g>
+  </symbol>
+  <symbol id="mosque" viewBox="0 0 200 150">
+    <defs>
+      <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#E3AFA6"/>
+        <stop offset="1" stop-color="#B8925A"/>
+      </linearGradient>
+    </defs>
+    <rect x="55" y="70" width="90" height="55" fill="url(#mg)" opacity=".9"/>
+    <path d="M55 70 Q100 20 145 70 Z" fill="url(#mg)" opacity=".9"/>
+    <circle cx="100" cy="18" r="4" fill="#9C7943"/>
+    <line x1="100" y1="8" x2="100" y2="18" stroke="#9C7943" stroke-width="2"/>
+    <rect x="150" y="45" width="12" height="80" fill="url(#mg)" opacity=".9"/>
+    <path d="M150 45 Q156 30 162 45 Z" fill="url(#mg)" opacity=".9"/>
+    <circle cx="156" cy="24" r="3" fill="#9C7943"/>
+    <line x1="156" y1="16" x2="156" y2="24" stroke="#9C7943" stroke-width="1.6"/>
+    <rect x="30" y="55" width="10" height="70" fill="url(#mg)" opacity=".9"/>
+    <path d="M30 55 Q35 42 40 55 Z" fill="url(#mg)" opacity=".9"/>
+    <path d="M85 90 Q100 70 115 90 L115 125 L85 125 Z" fill="#FFFFFF" opacity=".55"/>
+    <path d="M65 75 Q100 45 135 75" fill="none" stroke="#FFFFFF" stroke-width="1.4" opacity=".6"/>
+    <line x1="55" y1="125" x2="162" y2="125" stroke="#9C7943" stroke-width="1.2" opacity=".5"/>
+  </symbol>
+</defs>
+</svg>
+
+  <div class="hero">
+    <div class="flower" style="top:6%;right:2%;width:70px;height:70px;transform:rotate(20deg)"><svg><use href="#flower"/></svg></div>
+    <div class="flower" style="bottom:8%;left:3%;width:60px;height:60px;transform:rotate(-15deg) scaleX(-1)"><svg><use href="#flower"/></svg></div>
+    <div class="kicker">بإذن الله تعالى</div>
+    <div class="frame-row">
+      <div class="initial">م</div>
+      <svg class="frame" viewBox="0 0 220 280" aria-label="صورة العروسين">
+        <defs>
+          <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#D8B074"/>
+            <stop offset=".5" stop-color="#B8925A"/>
+            <stop offset="1" stop-color="#8E6C38"/>
+          </linearGradient>
+          <clipPath id="ov"><ellipse cx="110" cy="140" rx="76" ry="100"/></clipPath>
+        </defs>
+        <g id="photoSlot" clip-path="url(#ov)">
+          <image href="images/hero.jpg" x="34" y="40" width="152" height="200" preserveAspectRatio="xMidYMid slice"/>
+        </g>
+        <ellipse cx="110" cy="140" rx="82" ry="106" fill="none" stroke="url(#fg)" stroke-width="10"/>
+        <ellipse cx="110" cy="140" rx="92" ry="116" fill="none" stroke="url(#fg)" stroke-width="1.5"/>
+        <g id="beads" fill="url(#fg)"></g>
+        <use href="#flower" x="92" y="-4" width="36" height="36"/>
+        <use href="#flower" x="92" y="248" width="36" height="36" transform="rotate(180 110 266)"/>
+      </svg>
+      <div class="initial">ر</div>
+    </div>
+    <div class="names" style="font-size:clamp(28px,8vw,40px);line-height:1.55"><div>محمد مجدى</div><div><span class="amp" style="display:inline;margin:0 0 0 .5em;font-size:.8em">و</span>رحاب محمود</div></div>
+    <div class="date-line">يسعدنا دعوتكم لحضور كتب الكتاب والفرح</div>
+    <div class="datebig">26 . ديسمبر . 2026</div>
+    <div class="weekday">السبت</div>
+    <div class="date-line" style="margin-top:8px">من الساعة <b>٥</b> إلى <b>٧</b> مساءً</div>
+    <div class="divider"></div>
+    <div class="countdown" id="countdown">
+      <div class="cell"><span class="num" id="cd-d">00</span><span class="lbl">يوم</span></div>
+      <div class="cell"><span class="num" id="cd-h">00</span><span class="lbl">ساعة</span></div>
+      <div class="cell"><span class="num" id="cd-m">00</span><span class="lbl">دقيقة</span></div>
+      <div class="cell"><span class="num" id="cd-s">00</span><span class="lbl">ثانية</span></div>
+    </div>
+    <a class="scroll-hint" href="#invite"><span>مرر للأسفل</span><span class="circ"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8925A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+  </div>
+
+  <div class="wrap">
+    <section class="invite" id="invite">
+      <div class="qal">قال تعالى</div>
+      <div class="verse">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ</div>
+      <div class="sadaq">صدق الله العظيم</div>
+      <div class="divider"></div>
+      <p class="txt">على ضفاف الفرح، وتحت ظلال المودة والرحمة، وبقلوب تفيض حمدًا لله وشكرًا على تمام نعمته، يتشرف كل من</p>
+      <div class="row">
+        <div class="fam">عائلة / مجدى</div>
+        <div class="fam">عائلة / محمود</div>
+      </div>
+      <p class="txt">بدعوتكم لمشاركتهم بهجة أفراحهم، وإضاءة ليالي السرور بحضوركم الكريم، وذلك بمناسبة زفاف</p>
+      <div class="row" style="margin-top:14px">
+        <div class="who"><small>المهندس</small>محمد</div>
+        <div class="who"><small>المهندسة</small>رحاب</div>
+      </div>
+      <div class="when">26 ديسمبر 2026</div>
+      <div class="sub">من الساعة ٥ إلى ٧ مساءً</div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="story" id="story">
+      <div class="flower" style="top:-10px;left:0;width:46px;height:46px;transform:rotate(-25deg)"><svg><use href="#flower"/></svg></div>
+      <h2>كلمة من القلب</h2>
+      <p>
+        من أول يوم شفتك فيه، عرفت إن حياتي هتتغير للأحسن.
+        معاكِ اتعلمت معنى الأمان، ومعاكِ حسّيت إن الدنيا ممكن تكون بسيطة وهادية.
+        شكرًا إنك اخترتيني، وشكرًا إنك هتكوني شريكة عمري.
+        بإذن الله نكمل الطريق مع بعض بكل خير وسعادة.
+      </p>
+      <span class="sign">محمد</span>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section class="ourstory">
+      <div class="en">OUR BEAUTIFUL MOMENTS</div>
+      <h2>قصتنا</h2>
+      <p>بدأت حكايتنا ببساطة، وكبرت يومًا بعد يوم بالحب والمودة، واليوم نحتفل معكم بأجمل فصولها.</p>
+      <div class="hang">
+        <div class="item"><div class="string" style="height:64px"></div><div class="ring"></div>
+          <div class="fr"><img alt="" src="images/story-1.jpg" style="object-position:50% 3%"></div><div class="num">01</div></div>
+        <div class="item"><div class="string" style="height:22px"></div><div class="ring"></div>
+          <div class="fr"><img alt="" src="images/story-2.jpg" style="object-position:50% 10%"></div><div class="num">02</div></div>
+        <div class="item"><div class="string" style="height:44px"></div><div class="ring"></div>
+          <div class="fr"><img alt="" src="images/story-3.jpg" style="object-position:50% 3%"></div><div class="num">03</div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="gallery-wrap">
+    <h2>لحظاتنا</h2>
+    <div class="marquee" id="marquee"></div>
+  </div>
+
+  <div class="wrap">
+    <section class="details">
+      <div class="flower" style="top:0;right:-6px;width:50px;height:50px;transform:rotate(10deg)"><svg><use href="#flower"/></svg></div>
+      <h2 style="width:100%">تفاصيل اليوم</h2>
+
+      <div class="calendar-card">
+        <div class="cal-month">ديسمبر</div>
+        <div class="cal-day">26</div>
+        <div class="cal-weekday">السبت</div>
+        <div class="cal-year">2026</div>
+      </div>
+
+      <div class="card">
+        <div class="mosque-wrap"><svg><use href="#mosque"/></svg></div>
+        <div class="star-strip"></div>
+        <div class="t">كتب الكتاب والفرح</div>
+        <div class="d"><a href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--gold);">دار مناسبات مسجد العلي العظيم</a></div>
+      </div>
+      <div style="width:100%;text-align:center;margin-top:6px"><a class="btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D9%83%D8%AA%D8%A8%20%D9%83%D8%AA%D8%A7%D8%A8%20%D9%88%D9%81%D8%B1%D8%AD%20%D9%85%D8%AD%D9%85%D8%AF%20%D9%88%D8%B1%D8%AD%D8%A7%D8%A8&amp;dates=20261226T150000Z/20261226T170000Z&amp;details=%D8%A8%D8%A5%D8%B0%D9%86%20%D8%A7%D9%84%D9%84%D9%87%20%D9%86%D8%AA%D8%B4%D8%B1%D9%81%20%D8%A8%D8%AD%D8%B6%D9%88%D8%B1%D9%83%D9%85&amp;location=%D8%AF%D8%A7%D8%B1%20%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B9%D9%84%D9%8A%20%D8%A7%D9%84%D8%B9%D8%B8%D9%8A%D9%85" target="_blank" rel="noopener">أضف الموعد لتقويمك</a></div>
+    </section>
+
+    <section class="loc" id="location">
+      <svg class="flourish" viewBox="0 0 220 16" aria-hidden="true"><line x1="4" y1="8" x2="92" y2="8" stroke="#B8925A" stroke-width="1"/><line x1="128" y1="8" x2="216" y2="8" stroke="#B8925A" stroke-width="1"/><path d="M110 1 L117 8 L110 15 L103 8 Z" fill="#B8925A"/><circle cx="96" cy="8" r="2" fill="#E3AFA6"/><circle cx="124" cy="8" r="2" fill="#E3AFA6"/></svg>
+      <h2>طريقك إلينا</h2>
+      <a class="mapcard" href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener" aria-label="افتح الموقع على خرائط جوجل">
+        <svg viewBox="0 0 320 210">
+          <rect width="320" height="210" fill="#F3F0EA"/>
+          <polygon points="18,18 96,14 104,62 24,70" fill="#D3E7CC"/>
+          <polygon points="236,138 306,132 310,196 244,200" fill="#D3E7CC"/>
+          <g fill="#E9E4DA">
+            <rect x="120" y="20" width="46" height="30"/><rect x="176" y="14" width="52" height="34"/>
+            <rect x="24" y="90" width="52" height="34"/><rect x="200" y="86" width="44" height="30"/>
+            <rect x="96" y="150" width="50" height="34"/><rect x="20" y="150" width="56" height="40"/>
+          </g>
+          <g fill="none" stroke-linecap="round">
+            <g stroke="#DDD7CB" stroke-width="13">
+              <path d="M0 128 L320 70"/><path d="M78 0 L150 210"/><path d="M212 0 L262 210"/><path d="M0 180 L320 160"/>
+            </g>
+            <g stroke="#FFFFFF" stroke-width="9">
+              <path d="M0 128 L320 70"/><path d="M78 0 L150 210"/><path d="M212 0 L262 210"/><path d="M0 180 L320 160"/>
+            </g>
+          </g>
+          <path d="M170 116 C160 100 157 94 157 88 a13 13 0 1 1 26 0 c0 6 -3 12 -13 28z" fill="#D64F4F"/>
+          <circle cx="170" cy="88" r="4.5" fill="#fff"/>
+          <text x="170" y="138" text-anchor="middle" font-family="Tajawal,sans-serif" font-size="12" font-weight="500" fill="#4A3F38" stroke="#F3F0EA" stroke-width="3" paint-order="stroke">دار مناسبات مسجد العلي العظيم</text>
+        </svg>
+      </a>
+      <a class="btn-map" href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener">افتح في خرائط جوجل</a>
+      <div style="margin-top:22px"><svg class="flourish" viewBox="0 0 220 16" aria-hidden="true"><line x1="4" y1="8" x2="92" y2="8" stroke="#B8925A" stroke-width="1"/><line x1="128" y1="8" x2="216" y2="8" stroke="#B8925A" stroke-width="1"/><path d="M110 1 L117 8 L110 15 L103 8 Z" fill="#B8925A"/><circle cx="96" cy="8" r="2" fill="#E3AFA6"/><circle cx="124" cy="8" r="2" fill="#E3AFA6"/></svg></div>
+    </section>
+
+  </div>
+
+  <div class="wrap">
+    <section class="wishes" id="wishes">
+      <h2>تمنيات للعروسين</h2>
+      <p>اترك لنا كلمة حلوة نحتفظ بيها في ذكرى يومنا</p>
+      <div id="wishFields">
+        <input type="text" id="wishName" placeholder="اسمك">
+        <textarea id="wishText" placeholder="اكتب تمنياتك هنا"></textarea>
+      </div>
+      <button class="btn-solid" id="wishBtn" onclick="sendWish()">أرسل تمنياتك</button>
+    </section>
+    <section class="sharebox">
+      <button class="btn-ghost" onclick="shareInvite()">شارك الدعوة على واتساب</button>
+    </section>
+  </div>
+
+  <footer>
+    <div class="flower" style="top:0;right:14%;width:40px;height:40px;transform:rotate(15deg)"><svg><use href="#flower"/></svg></div>
+    محمد ورحاب — 26.12.2026
+    <div class="flower" style="top:0;left:14%;width:40px;height:40px;transform:rotate(-15deg) scaleX(-1)"><svg><use href="#flower"/></svg></div>
+  </footer>
+
+<script>
+  // ornate beads around the photo frame
+  (function(){
+    const g=document.getElementById('beads');
+    const ns='http://www.w3.org/2000/svg';
+    for(let i=0;i<28;i++){
+      const a=(i/28)*Math.PI*2;
+      const c=document.createElementNS(ns,'circle');
+      c.setAttribute('cx',110+87*Math.cos(a));
+      c.setAttribute('cy',140+111*Math.sin(a));
+      c.setAttribute('r',i%2?1.8:2.8);
+      g.appendChild(c);
+    }
+  })();
+
+  document.getElementById('splash').addEventListener('click',function(){
+    this.classList.add('hide');
+    document.body.classList.remove('locked');
+  });
+
+  setTimeout(function(){
+    const splash = document.getElementById('splash');
+    splash.classList.add('hide');
+    document.body.classList.remove('locked');
+  }, 4000);
+
+  const target = new Date("2026-12-26T17:00:00+02:00").getTime();
+  function updateCountdown(){
+    const now = Date.now();
+    const dist = Math.max(target - now, 0);
+    const d = Math.floor(dist/(1000*60*60*24));
+    const h = Math.floor((dist%(1000*60*60*24))/(1000*60*60));
+    const m = Math.floor((dist%(1000*60*60))/(1000*60));
+    const s = Math.floor((dist%(1000*60))/1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  const photos = [{"s": "images/gallery-01.jpg", "p": "50% 22%"}, {"s": "images/gallery-02.jpg", "p": "50% 25%"}, {"s": "images/gallery-03.jpg", "p": "50% 30%"}, {"s": "images/gallery-04.jpg", "p": "50% 15%"}, {"s": "images/gallery-05.jpg", "p": "50% 15%"}, {"s": "images/gallery-06.jpg", "p": "50% 25%"}, {"s": "images/gallery-07.jpg", "p": "50% 30%"}, {"s": "images/gallery-08.jpg", "p": "50% 28%"}, {"s": "images/gallery-09.jpg", "p": "50% 25%"}, {"s": "images/gallery-10.jpg", "p": "50% 15%"}, {"s": "images/gallery-11.jpg", "p": "50% 40%"}, {"s": "images/gallery-12.jpg", "p": "50% 10%"}, {"s": "images/gallery-13.jpg", "p": "50% 40%"}, {"s": "images/gallery-14.jpg", "p": "50% 35%"}, {"s": "images/gallery-15.jpg", "p": "50% 55%"}, {"s": "images/gallery-16.jpg", "p": "50% 55%"}];
+  const marquee = document.getElementById('marquee');
+  function buildSet(){
+    return photos.map(function(p){
+      return '<div class="ph"><img alt="" src="'+p.s+'" style="object-position:'+p.p+'"></div>';
+    }).join('');
+  }
+  marquee.innerHTML = buildSet() + buildSet();
+  marquee.style.animationDuration = (photos.length*4.2)+'s';
+
+  // Paste the Google Form link here to send wishes to a Google Sheet.
+  // While empty, wishes are sent to the couple on WhatsApp instead.
+  const WISHES_FORM_URL = '';
+  if (WISHES_FORM_URL) {
+    document.getElementById('wishFields').style.display = 'none';
+    document.getElementById('wishBtn').textContent = 'اكتب تمنياتك';
+  }
+  function sendWish(){
+    if (WISHES_FORM_URL) { window.open(WISHES_FORM_URL, '_blank'); return; }
+    const name = document.getElementById('wishName').value.trim();
+    const wish = document.getElementById('wishText').value.trim();
+    if(!name || !wish){ alert('من فضلك اكتب اسمك وتمنياتك'); return; }
+    const msg = encodeURIComponent(`تمنيات من ${name} للعروسين:\n${wish}`);
+    window.open(`https://wa.me/201154524570?text=${msg}`, '_blank');
+  }
+  function shareInvite(){
+    const msg = encodeURIComponent(`دعوة لحضور كتب الكتاب والفرح - محمد ورحاب - السبت 26 ديسمبر 2026\n${location.href}`);
+    window.open(`https://wa.me/?text=${msg}`, '_blank');
+  }
+
+</script>
+</body>
+</html>
