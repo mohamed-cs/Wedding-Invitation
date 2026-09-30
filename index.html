@@ -153,6 +153,12 @@
   .card .t{font-size:15px;color:var(--rose-deep);margin-bottom:8px;}
   .card .d{font-family:'Aref Ruqaa',serif;font-size:22px;color:var(--deep);font-weight:700;}
   .card .p{font-size:15px;color:var(--ink);margin-top:6px;}
+  .card .when{font-size:15px;color:var(--ink);margin-top:10px;}
+
+  /* Action buttons row (shared by location card and wishes) */
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px;width:100%;}
+  .actions .btn-solid,.actions .btn-ghost{flex:1 1 150px;text-align:center;}
+  .wishes .actions{max-width:420px;margin-left:auto;margin-right:auto;}
 
   /* Calendar card */
   .calendar-card{
@@ -244,15 +250,6 @@
   .invite .when{font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--deep);font-weight:700;margin-top:18px;}
   .invite .sub{font-size:15px;color:var(--ink);margin-top:6px;}
 
-  /* Location */
-  .loc{text-align:center;padding:24px 0 48px;}
-  .loc .flourish{display:block;margin:0 auto;width:220px;height:auto;}
-  .loc h2{margin:14px 0;}
-  .mapcard{display:block;margin:18px auto;max-width:400px;border:1px solid #E6DCCB;border-radius:4px;overflow:hidden;box-shadow:0 6px 20px rgba(184,146,90,.15);}
-  .mapcard svg{display:block;width:100%;height:auto;}
-  .btn-map{display:inline-block;margin-top:6px;background:var(--deep);color:#fff;text-decoration:none;padding:13px 32px;border-radius:4px;font-size:15px;font-weight:500;}
-  .btn-map:hover{background:#5a473c;}
-  .btn-map:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 
   /* Our story - hanging frames */
   .ourstory{text-align:center;padding:24px 0 56px;}
@@ -276,7 +273,7 @@
   .hang .num{margin-top:14px;width:26px;height:26px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--gold-deep);background:var(--white);}
 
   /* Wishes & share */
-  .wishes{text-align:center;padding:24px 0 24px;}
+  .wishes{text-align:center;padding:24px 0 40px;}
   .wishes p{font-size:16px;color:var(--ink);margin:0 0 22px;}
   .wishes input,.wishes textarea{width:100%;max-width:340px;padding:14px 16px;border:1px solid #EEDFDA;border-radius:4px;font-family:'Tajawal',sans-serif;font-size:16px;background:var(--white);color:var(--ink);text-align:center;margin-bottom:14px;display:block;margin-left:auto;margin-right:auto;}
   .wishes textarea{min-height:110px;resize:vertical;}
@@ -287,7 +284,6 @@
   .btn-ghost{background:transparent;color:var(--gold-deep);border:1px solid var(--gold);}
   .btn-ghost:hover{background:#FBF3E8;}
   .btn-solid:focus-visible,.btn-ghost:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
-  .sharebox{text-align:center;padding:16px 0 40px;}
 
   footer{
     text-align:center;
@@ -509,40 +505,15 @@
         <div class="mosque-wrap"><svg><use href="#mosque"/></svg></div>
         <div class="star-strip"></div>
         <div class="t">كتب الكتاب والفرح</div>
-        <div class="d"><a href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dashed var(--gold);">دار مناسبات مسجد العلي العظيم</a></div>
+        <div class="d">دار مناسبات مسجد العلي العظيم</div>
+        <div class="when">السبت ٢٦ ديسمبر ٢٠٢٦ · من الساعة ٥ إلى ٧ مساءً</div>
+        <div class="actions">
+          <a class="btn-solid" href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener">افتح الموقع في الخريطة</a>
+          <a class="btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D9%83%D8%AA%D8%A8%20%D9%83%D8%AA%D8%A7%D8%A8%20%D9%88%D9%81%D8%B1%D8%AD%20%D9%85%D8%AD%D9%85%D8%AF%20%D9%88%D8%B1%D8%AD%D8%A7%D8%A8&amp;dates=20261226T150000Z/20261226T170000Z&amp;details=%D8%A8%D8%A5%D8%B0%D9%86%20%D8%A7%D9%84%D9%84%D9%87%20%D9%86%D8%AA%D8%B4%D8%B1%D9%81%20%D8%A8%D8%AD%D8%B6%D9%88%D8%B1%D9%83%D9%85&amp;location=%D8%AF%D8%A7%D8%B1%20%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B9%D9%84%D9%8A%20%D8%A7%D9%84%D8%B9%D8%B8%D9%8A%D9%85" target="_blank" rel="noopener">أضف الموعد لتقويمك</a>
+        </div>
       </div>
-      <div style="width:100%;text-align:center;margin-top:6px"><a class="btn-ghost" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=%D9%83%D8%AA%D8%A8%20%D9%83%D8%AA%D8%A7%D8%A8%20%D9%88%D9%81%D8%B1%D8%AD%20%D9%85%D8%AD%D9%85%D8%AF%20%D9%88%D8%B1%D8%AD%D8%A7%D8%A8&amp;dates=20261226T150000Z/20261226T170000Z&amp;details=%D8%A8%D8%A5%D8%B0%D9%86%20%D8%A7%D9%84%D9%84%D9%87%20%D9%86%D8%AA%D8%B4%D8%B1%D9%81%20%D8%A8%D8%AD%D8%B6%D9%88%D8%B1%D9%83%D9%85&amp;location=%D8%AF%D8%A7%D8%B1%20%D9%85%D9%86%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA%20%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D8%B9%D9%84%D9%8A%20%D8%A7%D9%84%D8%B9%D8%B8%D9%8A%D9%85" target="_blank" rel="noopener">أضف الموعد لتقويمك</a></div>
     </section>
 
-    <section class="loc" id="location">
-      <svg class="flourish" viewBox="0 0 220 16" aria-hidden="true"><line x1="4" y1="8" x2="92" y2="8" stroke="#B8925A" stroke-width="1"/><line x1="128" y1="8" x2="216" y2="8" stroke="#B8925A" stroke-width="1"/><path d="M110 1 L117 8 L110 15 L103 8 Z" fill="#B8925A"/><circle cx="96" cy="8" r="2" fill="#E3AFA6"/><circle cx="124" cy="8" r="2" fill="#E3AFA6"/></svg>
-      <h2>طريقك إلينا</h2>
-      <a class="mapcard" href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener" aria-label="افتح الموقع على خرائط جوجل">
-        <svg viewBox="0 0 320 210">
-          <rect width="320" height="210" fill="#F3F0EA"/>
-          <polygon points="18,18 96,14 104,62 24,70" fill="#D3E7CC"/>
-          <polygon points="236,138 306,132 310,196 244,200" fill="#D3E7CC"/>
-          <g fill="#E9E4DA">
-            <rect x="120" y="20" width="46" height="30"/><rect x="176" y="14" width="52" height="34"/>
-            <rect x="24" y="90" width="52" height="34"/><rect x="200" y="86" width="44" height="30"/>
-            <rect x="96" y="150" width="50" height="34"/><rect x="20" y="150" width="56" height="40"/>
-          </g>
-          <g fill="none" stroke-linecap="round">
-            <g stroke="#DDD7CB" stroke-width="13">
-              <path d="M0 128 L320 70"/><path d="M78 0 L150 210"/><path d="M212 0 L262 210"/><path d="M0 180 L320 160"/>
-            </g>
-            <g stroke="#FFFFFF" stroke-width="9">
-              <path d="M0 128 L320 70"/><path d="M78 0 L150 210"/><path d="M212 0 L262 210"/><path d="M0 180 L320 160"/>
-            </g>
-          </g>
-          <path d="M170 116 C160 100 157 94 157 88 a13 13 0 1 1 26 0 c0 6 -3 12 -13 28z" fill="#D64F4F"/>
-          <circle cx="170" cy="88" r="4.5" fill="#fff"/>
-          <text x="170" y="138" text-anchor="middle" font-family="Tajawal,sans-serif" font-size="12" font-weight="500" fill="#4A3F38" stroke="#F3F0EA" stroke-width="3" paint-order="stroke">دار مناسبات مسجد العلي العظيم</text>
-        </svg>
-      </a>
-      <a class="btn-map" href="https://maps.app.goo.gl/9i3XkPaKNnFZvnVp7" target="_blank" rel="noopener">افتح في خرائط جوجل</a>
-      <div style="margin-top:22px"><svg class="flourish" viewBox="0 0 220 16" aria-hidden="true"><line x1="4" y1="8" x2="92" y2="8" stroke="#B8925A" stroke-width="1"/><line x1="128" y1="8" x2="216" y2="8" stroke="#B8925A" stroke-width="1"/><path d="M110 1 L117 8 L110 15 L103 8 Z" fill="#B8925A"/><circle cx="96" cy="8" r="2" fill="#E3AFA6"/><circle cx="124" cy="8" r="2" fill="#E3AFA6"/></svg></div>
-    </section>
 
   </div>
 
@@ -554,10 +525,10 @@
         <input type="text" id="wishName" placeholder="اسمك">
         <textarea id="wishText" placeholder="اكتب تمنياتك هنا"></textarea>
       </div>
-      <button class="btn-solid" id="wishBtn" onclick="sendWish()">أرسل تمنياتك</button>
-    </section>
-    <section class="sharebox">
-      <button class="btn-ghost" onclick="shareInvite()">شارك الدعوة على واتساب</button>
+      <div class="actions">
+        <button class="btn-solid" id="wishBtn" onclick="sendWish()">أرسل تمنياتك</button>
+        <button class="btn-ghost" onclick="shareInvite()">شارك الدعوة على واتساب</button>
+      </div>
     </section>
   </div>
 
