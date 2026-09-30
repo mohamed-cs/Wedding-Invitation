@@ -194,7 +194,7 @@
   }
 
   /* Gallery */
-  .gallery-wrap{overflow:hidden;padding:64px 0;position:relative;direction:ltr;}
+  .gallery-wrap{overflow:hidden;padding:50px 0 60px;position:relative;direction:ltr;}
   .gallery-wrap h2{margin-bottom:34px;}
   .marquee{
     display:flex;
@@ -204,19 +204,28 @@
     animation:scroll 28s linear infinite;
   }
   @media (prefers-reduced-motion: reduce){ .marquee{animation:none;} }
-  .marquee .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .marquee{align-items:flex-start;padding:26px 10px 10px;}
   .marquee .ph{
-    overflow:hidden;
-    width:150px;height:190px;
-    border-radius:4px;
     flex:0 0 auto;
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;
-    font-family:'Aref Ruqaa',serif;
-    font-size:15px;
-    text-align:center;
-    padding:10px;
+    width:148px;
+    background:var(--white);
+    padding:9px 9px 0;
+    border-radius:2px;
+    box-shadow:0 10px 22px rgba(58,46,40,.16), 0 2px 5px rgba(58,46,40,.08);
+    transition:transform .25s ease;
+    position:relative;
+    padding-bottom:14px;
   }
+  .marquee .ph:nth-child(odd){transform:rotate(-3.5deg);}
+  .marquee .ph:nth-child(even){transform:rotate(3deg);}
+  .marquee .ph:hover{transform:rotate(0) scale(1.06);z-index:5;}
+  .marquee .ph::before{
+    content:"";position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-4deg);
+    width:46px;height:16px;background:linear-gradient(rgba(227,175,166,.55),rgba(227,175,166,.4));
+    box-shadow:0 1px 2px rgba(58,46,40,.15);
+  }
+  .marquee .ph .shot{width:100%;height:172px;overflow:hidden;background:#eee;}
+  .marquee .ph img{width:100%;height:100%;object-fit:cover;display:block;}
   @keyframes scroll{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
@@ -604,7 +613,7 @@
   const marquee = document.getElementById('marquee');
   function buildSet(){
     return photos.map(function(p){
-      return '<div class="ph"><img alt="" src="'+p.s+'" style="object-position:'+p.p+'"></div>';
+      return '<div class="ph"><div class="shot"><img alt="" src="'+p.s+'" style="object-position:'+p.p+'"></div></div>';
     }).join('');
   }
   marquee.innerHTML = buildSet() + buildSet();
