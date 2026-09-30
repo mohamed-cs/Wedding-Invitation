@@ -311,47 +311,75 @@
   body.locked{overflow:hidden;height:100vh;}
   .splash{
     position:fixed;inset:0;z-index:1000;
-    background:var(--ivory);
-    display:flex;align-items:center;justify-content:center;
+    background:var(--ivory) url('images/venue.jpg') center top/cover no-repeat;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 0 130px;
     overflow:hidden;
     transition:opacity .8s ease, visibility .8s ease;
   }
   .splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
-  .splash .flap{position:absolute;inset:0;}
-  .splash .flap.top{clip-path:polygon(0 0,100% 0,50% 50%);background:linear-gradient(180deg,#F6EEE3,#FBF6EF);}
-  .splash .flap.bottom{clip-path:polygon(0 100%,100% 100%,50% 50%);background:linear-gradient(0deg,#F6EEE3,#FBF6EF);}
-  .splash .flap.left{clip-path:polygon(0 0,0 100%,50% 50%);background:linear-gradient(90deg,#F1E7D8,#FBF6EF);}
-  .splash .flap.right{clip-path:polygon(100% 0,100% 100%,50% 50%);background:linear-gradient(270deg,#F1E7D8,#FBF6EF);}
-  .splash .seal{
-    position:relative;z-index:2;
-    width:130px;height:130px;border-radius:50%;
+  .splash .petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;}
+  .splash .fall{position:absolute;top:-70px;animation:fall var(--d) linear var(--dl) infinite;}
+  .splash .fall .sway{animation:swayp var(--s) ease-in-out infinite alternate;}
+  .splash .fall svg{display:block;width:100%;height:100%;}
+  @keyframes fall{to{transform:translateY(calc(100vh + 140px));}}
+  @keyframes swayp{from{transform:translateX(-26px) rotate(-35deg);}to{transform:translateX(26px) rotate(45deg);}}
+  .splash .center{
+    position:relative;z-index:1;text-align:center;padding:0 24px;
+    animation:rise 1.2s ease both;
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  .splash .center{background:rgba(253,249,245,.9);border:1px solid var(--gold);border-radius:6px;padding:16px 26px 14px;width:min(86vw,340px);box-shadow:0 8px 22px rgba(58,46,40,.18);}
+  @media (orientation:landscape){.splash{background-size:auto 100%;}}
+  .splash .center .bs{font-family:'Aref Ruqaa',serif;font-size:16px;color:var(--gold-deep);}
+  .splash .center .nm{font-family:'Aref Ruqaa',serif;font-weight:700;color:var(--deep);font-size:clamp(30px,9vw,44px);line-height:1.35;margin-top:8px;}
+  .splash .center .nm span{display:block;font-size:.45em;color:var(--gold);line-height:1.2;}
+  .splash .center .ln{width:64px;height:1px;background:var(--gold);margin:10px auto;opacity:.7;}
+  .splash .center .dt{font-size:16px;color:var(--ink);}
+  .splash .slide{
+    position:absolute;bottom:7%;left:50%;transform:translateX(-50%);z-index:3;
+    width:min(78vw,300px);height:60px;direction:ltr;
+    border:1px solid var(--gold);border-radius:30px;
+    background:rgba(255,255,255,.75);overflow:hidden;
+    transition:opacity .3s ease;
+  }
+  .splash .slide .lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--gold-deep);padding:0 60px;pointer-events:none;direction:rtl;}
+  .splash .slide .fill{position:absolute;right:0;top:0;bottom:0;width:54px;background:linear-gradient(270deg,rgba(227,175,166,.5),rgba(184,146,90,.25));border-radius:30px;transition:width .3s ease;}
+  .splash .slide .handle{
+    position:absolute;right:4px;top:4px;width:50px;height:50px;border-radius:50%;
     background:radial-gradient(circle at 35% 30%, #D8B074, var(--gold-deep));
-    box-shadow:0 6px 18px rgba(156,121,67,.4), inset 0 2px 4px rgba(255,255,255,.4), inset 0 -3px 6px rgba(0,0,0,.2);
+    box-shadow:0 3px 10px rgba(156,121,67,.4), inset 0 1px 3px rgba(255,255,255,.4);
     display:flex;align-items:center;justify-content:center;
-    text-align:center;
+    cursor:grab;touch-action:none;transition:transform .3s ease;
   }
-  .splash .seal span{
-    font-family:'Aref Ruqaa',serif;
-    color:#3A2E17;
-    font-size:15px;
-    line-height:1.5;
-    padding:8px;
+  .splash .slide.drag .handle,.splash .slide.drag .fill{transition:none;}
+  .splash .slide .handle:focus-visible{outline:2px solid var(--deep);outline-offset:2px;}
+  .splash .slide .handle svg{width:30px;height:30px;pointer-events:none;}
+  .splash.open .center{opacity:0;transform:scale(1.05);}
+  .splash.open .slide{opacity:0;}
+  @media (prefers-reduced-motion: reduce){
+    .splash .petals{display:none;}
+    .splash .center{animation:none;}
   }
-  .splash .splash-flowers .flower{opacity:.7;}
 </style>
 </head>
 <body class="locked">
 
 <div class="splash" id="splash">
-  <div class="flap top"></div>
-  <div class="flap bottom"></div>
-  <div class="flap left"></div>
-  <div class="flap right"></div>
-  <div class="splash-flowers">
-    <div class="flower" style="top:6%;right:6%;width:56px;height:56px;transform:rotate(15deg)"><svg><use href="#flower"/></svg></div>
-    <div class="flower" style="bottom:6%;left:6%;width:56px;height:56px;transform:rotate(-20deg) scaleX(-1)"><svg><use href="#flower"/></svg></div>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+  <div class="center">
+    <div class="bs">بسم الله الرحمن الرحيم</div>
+    <div class="nm">محمد<span>و</span>رحاب</div>
+    <div class="ln"></div>
+    <div class="dt">السبت ٢٦ ديسمبر ٢٠٢٦</div>
   </div>
-  <div class="seal"><span>بسم الله<br>الرحمن الرحيم</span></div>
+  <div class="slide" id="slide">
+    <div class="fill" id="fill"></div>
+    <div class="lbl" id="slideLbl">اسحب لفتح الدعوة</div>
+    <div class="handle" id="handle" role="button" tabindex="0" aria-label="افتح الدعوة">
+      <svg viewBox="0 0 30 30" fill="none" stroke="#3A2E17" stroke-width="2"><circle cx="11" cy="15" r="7"/><circle cx="19" cy="15" r="7"/></svg>
+    </div>
+  </div>
 </div>
 
 <svg style="position:absolute;width:0;height:0" aria-hidden="true">
@@ -388,6 +416,14 @@
     <path d="M85 90 Q100 70 115 90 L115 125 L85 125 Z" fill="#FFFFFF" opacity=".55"/>
     <path d="M65 75 Q100 45 135 75" fill="none" stroke="#FFFFFF" stroke-width="1.4" opacity=".6"/>
     <line x1="55" y1="125" x2="162" y2="125" stroke="#9C7943" stroke-width="1.2" opacity=".5"/>
+  </symbol>
+  <symbol id="petal" viewBox="0 0 30 40">
+    <path d="M15 2 C27 10 27 27 15 38 C3 27 3 10 15 2Z" fill="#E3AFA6" opacity=".9"/>
+    <path d="M15 8 L15 32" stroke="#C9857A" stroke-width=".8" opacity=".6"/>
+  </symbol>
+  <symbol id="leaf" viewBox="0 0 30 50">
+    <path d="M15 2 C28 14 28 36 15 48 C2 36 2 14 15 2Z" fill="#B8925A" opacity=".75"/>
+    <path d="M15 8 L15 46" stroke="#9C7943" stroke-width=".9" opacity=".8"/>
   </symbol>
 </defs>
 </svg>
@@ -553,16 +589,64 @@
     }
   })();
 
-  document.getElementById('splash').addEventListener('click',function(){
-    this.classList.add('hide');
-    document.body.classList.remove('locked');
-  });
-
-  setTimeout(function(){
-    const splash = document.getElementById('splash');
-    splash.classList.add('hide');
-    document.body.classList.remove('locked');
-  }, 4000);
+  const splashEl = document.getElementById('splash');
+  let splashOpened = false;
+  function openSplash(){
+    if(splashOpened) return;
+    splashOpened = true;
+    splashEl.classList.add('open');
+    setTimeout(function(){
+      splashEl.classList.add('hide');
+      document.body.classList.remove('locked');
+    }, 500);
+  }
+  (function(){
+    const box = document.getElementById('petals');
+    const kinds = ['petal','petal','petal','leaf','leaf'];
+    for(let i=0;i<28;i++){
+      const k = kinds[i % kinds.length];
+      const w = 14 + Math.random()*20;
+      const h = k==='leaf' ? w*1.6 : w*1.3;
+      const d = 6 + Math.random()*5;
+      const f = document.createElement('div');
+      f.className = 'fall';
+      f.style.left = (Math.random()*100)+'%';
+      f.style.width = w+'px';
+      f.style.height = h+'px';
+      f.style.setProperty('--d', d+'s');
+      f.style.setProperty('--dl', (-Math.random()*d)+'s');
+      f.style.setProperty('--s', (2+Math.random()*2)+'s');
+      f.innerHTML = '<div class="sway" style="width:100%;height:100%"><svg><use href="#'+k+'"/></svg></div>';
+      box.appendChild(f);
+    }
+  })();
+  (function(){
+    const slide=document.getElementById('slide'), h=document.getElementById('handle'),
+          fill=document.getElementById('fill'), lbl=document.getElementById('slideLbl');
+    let drag=false, startX=0, x=0, max=0;
+    function calc(){ max=slide.clientWidth-h.offsetWidth-8; }
+    function setX(v){
+      x=Math.max(0,Math.min(max,v));
+      h.style.transform='translateX('+(-x)+'px)';
+      fill.style.width=(x+54)+'px';
+      lbl.style.opacity=Math.max(0,1-(max?x/max:0)*1.5);
+    }
+    h.addEventListener('pointerdown',function(e){
+      calc(); drag=true; startX=e.clientX+x;
+      h.setPointerCapture(e.pointerId); slide.classList.add('drag');
+    });
+    h.addEventListener('pointermove',function(e){ if(drag) setX(startX-e.clientX); });
+    function end(){
+      if(!drag) return;
+      drag=false; slide.classList.remove('drag');
+      if(x>=max*0.85){ setX(max); openSplash(); } else { setX(0); }
+    }
+    h.addEventListener('pointerup',end);
+    h.addEventListener('pointercancel',end);
+    h.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '||e.key==='ArrowLeft'){ e.preventDefault(); calc(); setX(max); openSplash(); }
+    });
+  })();
 
   const target = new Date("2026-12-26T17:00:00+02:00").getTime();
   function updateCountdown(){
